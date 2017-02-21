@@ -2,28 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin = "6dp"
+    android:padding = "5dp"
     android:orientation="horizontal">
-
-    <CheckBox
-        android:id="@+id/seleccionado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView android:id="@+id/pasatiempo"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombres del lugar"
-        android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:singleLine="true" />
+        android:orientation="horizontal">
 
-    <RatingBar
-        android:id="@+id/valoracion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        style="?android:attr/ratingBarStyleSmall"
-        android:isIndicator="true"
-        android:rating="3"/>
+        <CheckBox
+            android:id="@+id/checkboxpasatiempos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"/>
+
+        <TextView
+            android:id = "@+id/nombrePasatiempo"
+            android:layout_width = "130dp"
+            android:layout_height = "wrap_content"
+            android:layout_marginEnd="20dp"/>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="240dp"
+            android:layout_height="43dp"
+            style="?android:attr/rating"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            android:numStars="5"
+            android:isIndicator="true"/>
+    </LinearLayout>
+
+
 
 </LinearLayout>

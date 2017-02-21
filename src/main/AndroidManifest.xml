@@ -11,8 +11,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".PersonalInfo"
-            android:label="@string/title_activity_personal_info"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_personal_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,19 +21,10 @@
         <activity
             android:name=".ContactInfo"
             android:label="@string/title_activity_contact_info">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".OtherInfo"
             android:label="@string/title_activity_other_info">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>></activity>
+        </activity>
     </application>
 
 </manifest>

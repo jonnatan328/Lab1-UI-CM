@@ -1,29 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LabsCM20171</string>
 
     <!-- Resources for PersonalInfo  -->
-    <string name="title_activity_personal_info">Información personal</string>
-    <string name="nombres">Nombres</string>
-    <string name="apellidos">Apellidos</string>
-    <string name="masculino">Hombre</string>
-    <string name="femenino">Mujer</string>
-    <string name="sexo">Sexo:</string>
-    <string name="datapicker">Cambiar</string>
-    <string name="fechaNacimiento">Fecha de nacimiento</string>
+    <string name="title_activity_personal_info">Personal data</string>
+    <string name="nombres">Names</string>
+    <string name="apellidos">Lastnames</string>
+    <string name="masculino">Male</string>
+    <string name="femenino">Female</string>
+    <string name="sexo">Gender:</string>
+    <string name="datapicker">Change</string>
+    <string name="fechaNacimiento">Birthday</string>
     <string-array name="gradosEscolaridad">
-        <item>Grado de escolaridad</item>
-        <item>Primaria</item>
-        <item>Secundaria</item>
-        <item>Universitaria</item>
-        <item>Otro</item>
+        <item>Education</item>
+        <item>Elemental</item>
+        <item>High school</item>
+        <item>College</item>
+        <item>Other</item>
     </string-array>
-    <string name="botonSiguiente">Siguiente</string>
+    <string name="botonSiguiente">Next</string>
 
     <!-- Resources for contactInfo -->
-    <string name="title_activity_contact_info">Información de contacto</string>
-    <string name="telefono">Teléfono</string>
-    <string name="correo">Correo</string>
-    <string name="pais">Pais</string>
+    <string name="title_activity_contact_info">Contact data</string>
+    <string name="telefono">Phone</string>
+    <string name="correo">E-mail</string>
+    <string name="pais">Country</string>
     <string-array name="countries_array">
         <item>Argentina</item>
         <item>Bolivia</item>
@@ -45,7 +46,7 @@
         <item>Uruguay</item>
         <item>Venezuela</item>
     </string-array>
-    <string name="city">Ciudad</string>
+    <string name="city">City</string>
     <string-array name="cities_array">
         <item>Barranquilla</item>
         <item>Bogota</item>
@@ -55,21 +56,21 @@
         <item>Medellin</item>
         <item>Santa Marta</item>
     </string-array>
-    <string name="address">Dirección</string>
+    <string name="address">Address</string>
 
 
 
     <!-- Resources for contactInfo -->
     <string name="title_activity_other_info">Información complementaria</string>
-    <string name="pasatiempos">Pasatiempos: </string>
+    <string name="pasatiempos">Hobbies: </string>
     <string-array name="listaPasatiempos">
-        <item>Leer</item>
-        <item>Ver TV</item>
-        <item>Bailar</item>
-        <item>Cantar</item>
-        <item>Nadar</item>
+        <item>Reading</item>
+        <item>Watching TV</item>
+        <item>Dancing</item>
+        <item>Singing</item>
+        <item>swiming</item>
     </string-array>
-    <string name="mostrar">Mostrar</string>
+    <string name="mostrar">Show</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

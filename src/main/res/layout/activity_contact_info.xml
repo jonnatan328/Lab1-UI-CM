@@ -114,7 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/address"
-        android:inputType="textPostalAddress"
+        android:inputType="textPostalAddress|textNoSuggestions"
         android:imeOptions="actionNext"
         android:layout_toEndOf="@id/imagenAddress"
         android:layout_below="@id/autoCompleteTextCity"
@@ -122,7 +122,7 @@
 
     <Button
         android:id="@+id/buttonSiguiente"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:text="@string/botonSiguiente"

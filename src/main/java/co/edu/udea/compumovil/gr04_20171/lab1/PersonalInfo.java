@@ -1,6 +1,8 @@
 package co.edu.udea.compumovil.gr04_20171.lab1;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.icu.util.RangeValueIterator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,17 +29,47 @@ public class PersonalInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        final EditText textNombres = (EditText)findViewById(R.id.EditTextNombres);
+        final EditText textApellidos = (EditText)findViewById(R.id.EditTextApellidos);
+        final RadioGroup genero = (RadioGroup) findViewById(R.id.RadioGroupOpcSexo);
+        final Spinner escolaridad = (Spinner) findViewById(R.id.SpinnerEscolaridad);
+        final TextView fechaNac = (TextView) findViewById(R.id.TextViewFechaNac);
+
+
+
+        //Event click for next button
+        Button boton = (Button) findViewById(R.id.botonSigPerso);
+        boton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                String valueNombres = textNombres.getText().toString();
+                String valueApellidos = textApellidos.getText().toString();
+                if(valueNombres.length() == 0){
+                    textNombres.setError("Requerido");//R.string.errorNombre
+                }
+                else if(valueApellidos.length() == 0){
+                    textApellidos.setError("Requerido");
+                }
+                else {
+                    int id = genero.getCheckedRadioButtonId();
+                    RadioButton sexo = (RadioButton) findViewById(id);
+                    ArrayList<String> data = new ArrayList();
+                    data.add(valueNombres);
+                    data.add(valueApellidos);
+                    data.add((String) sexo.getText());
+                    data.add((String) fechaNac.getText());
+                    data.add((String) escolaridad.getSelectedItem());
+                    Intent intent = new Intent(PersonalInfo.this, ContactInfo.class);
+                    intent.putExtra("personalInfo", data);
+                    startActivity(intent);
+                }
+
+
             }
         });
+
+
         //Create spinner with the grades of .....
         Spinner spinner = (Spinner) findViewById(R.id.SpinnerEscolaridad);
 
@@ -79,7 +115,7 @@ public class PersonalInfo extends AppCompatActivity {
                 if(position > 0){
                     // Notify the selected item text
                     Toast.makeText
-                            (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
+                            (getApplicationContext(), selectedItemText, Toast.LENGTH_SHORT)
                             .show();
                 }
             }
