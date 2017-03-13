@@ -17,9 +17,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import co.edu.udea.compumovil.gr04_20171.lab2.HomeActivity;
 import co.edu.udea.compumovil.gr04_20171.lab2.R;
 import co.edu.udea.compumovil.gr04_20171.lab2.Session;
-import co.edu.udea.compumovil.gr04_20171.lab2.WelcomeActivity;
+//import co.edu.udea.compumovil.gr04_20171.lab2.WelcomeActivity;
 import co.edu.udea.compumovil.gr04_20171.lab2.user.addEdit.AddEditUserActivity;
 import co.edu.udea.compumovil.gr04_20171.lab2.user.data.User;
 import co.edu.udea.compumovil.gr04_20171.lab2.user.data.UserDbHelper;
@@ -114,7 +115,7 @@ public class LoginFragment extends Fragment {
         });
 
         if (session.loggedin()){
-            startActivity(new Intent(getActivity(),WelcomeActivity.class));
+            startActivity(new Intent(getActivity(),HomeActivity.class));
             getActivity().finish();
         }
 
@@ -218,8 +219,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void showAppointmentsScreen() {
-        Intent intent = new Intent(getActivity(), WelcomeActivity.class);
-        startActivityForResult(intent, WelcomeActivity.REQUEST_WELCOME_USER);
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        startActivity(intent);
     }
 
     public void onLoginFailed() {

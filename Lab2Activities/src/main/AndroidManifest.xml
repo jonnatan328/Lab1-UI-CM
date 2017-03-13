@@ -6,7 +6,7 @@
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="23" />
 
-    <permission android:name="android.permission.READ_EXTERNAL_STORAGE"></permission>
+    <permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,8 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,8 +31,15 @@
         </activity>
         <activity
             android:name=".user.addEdit.AddEditUserActivity"
-            android:theme="@style/AppTheme.Login"></activity>
-        <activity android:name=".WelcomeActivity"></activity>
+            android:theme="@style/AppTheme.Login" />
+        <activity android:name=".WelcomeActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".configuration.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>

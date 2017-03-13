@@ -26,6 +26,8 @@ public class Event {
     private String location;
     private SimpleDateFormat dateFormat;
 
+    public Event() {}
+
     public Event(int id, String pictureUri, String name, String description, int rating, String personInCharge, Date date, String location) {
         this.pictureUri = pictureUri;
         this.name = name;
