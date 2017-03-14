@@ -35,14 +35,19 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                EventFragment eventFragment = (EventFragment)
+                        getSupportFragmentManager().findFragmentById(R.id.content_home);
+                if (eventFragment == null) {
+                    eventFragment = EventFragment.newInstance();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.content_home, eventFragment)
+                            .commit();
+                }
             }
         });
 
@@ -106,7 +111,15 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_events) {
-            fragment = new EventFragment();
+            EventFragment eventFragment = (EventFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.content_home);
+            if (eventFragment == null) {
+                eventFragment = EventFragment.newInstance();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.content_home, eventFragment)
+                        .commit();
+            }
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_config) {

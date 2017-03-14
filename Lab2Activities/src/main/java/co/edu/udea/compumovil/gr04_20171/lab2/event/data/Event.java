@@ -28,7 +28,7 @@ public class Event {
 
     public Event() {}
 
-    public Event(int id, String pictureUri, String name, String description, int rating, String personInCharge, Date date, String location) {
+    public Event(String pictureUri, String name, String description, int rating, String personInCharge, Date date, String location) {
         this.pictureUri = pictureUri;
         this.name = name;
         this.description = description;

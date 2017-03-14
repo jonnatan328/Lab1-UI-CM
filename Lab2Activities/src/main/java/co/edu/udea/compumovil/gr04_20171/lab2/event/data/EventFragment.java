@@ -1,50 +1,39 @@
 package co.edu.udea.compumovil.gr04_20171.lab2.event.data;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
+
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
-import co.edu.udea.compumovil.gr04_20171.lab2.HomeActivity;
+
 import co.edu.udea.compumovil.gr04_20171.lab2.R;
-import co.edu.udea.compumovil.gr04_20171.lab2.user.login.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link EventFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
  * Use the {@link EventFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class EventFragment extends Fragment {
 
 
-    public static List<Event> events;
+    public  ArrayList<Event> events;
+    private RecyclerView recyclerView;
+    private EventDbHelper eventDbHelper;
 
-    private static RecyclerView recyclerView;
 
-    private static EventDbHelper eventDbHelper;
 
-    private static SQLiteDatabase sqLiteDatabase;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
 //    private OnFragmentInteractionListener mListener;
 
@@ -56,16 +45,12 @@ public class EventFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment EventFragment.
      */
-    /*// TODO: Rename and change types and number of parameters
-    public static EventFragment newInstance(String param1, String param2) {
+    // TODO: Rename and change types and number of parameters
+    public static EventFragment newInstance() {
         EventFragment fragment = new EventFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -74,12 +59,11 @@ public class EventFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
 
 
-    }*/
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,31 +72,58 @@ public class EventFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
-        eventDbHelper = new EventDbHelper(getContext());
-        sqLiteDatabase = eventDbHelper.getWritableDatabase();
-        eventDbHelper.loadEvents(sqLiteDatabase);
+        eventDbHelper = new EventDbHelper(getActivity());
 
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        initializeData();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        try {
+            initializeData();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         initializeAdapter();
         getActivity().setTitle("Eventos");
         return view;
     }
 
-    public static void initializeData() {
-
-        //events = eventDbHelper.getAllEventsInList();
+    public void initializeData() throws ParseException {
+        Cursor cursor = eventDbHelper.getAllEvents();
+        int sizeCursor = cursor.getCount();
+        events = new ArrayList<Event>(sizeCursor);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()) {
+            Event eventDb = null;
+            String pictureUri = cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.PICTURE_URI));
+            String name = cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.NAME));
+            String description = cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.DESCRIPTION));
+            int rating = cursor.getInt(cursor.getColumnIndex(EventContract.EventEntry.RATING));
+            String personInCharge = cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.PERSON_IN_CHARGE));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            date = dateFormat.parse(cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.DATE)));
+            String location = cursor.getString(cursor.getColumnIndex(EventContract.EventEntry.LOCATION));
+            eventDb = new Event(pictureUri, name, description, rating, personInCharge, date, location);
+            //add the item
+            events.add(eventDb);
+            cursor.moveToNext();
+        }
+        cursor.close();
     }
 
-    public static void initializeAdapter() {
-        EventListAdapter eventListAdapter = new EventListAdapter(events);
+    public void initializeAdapter() {
+        final EventListAdapter eventListAdapter = new EventListAdapter(events);
+        eventListAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("DemoRecView", "Pulsado el elemento " + recyclerView.getChildPosition(v));
+            }
+        });
         recyclerView.setAdapter(eventListAdapter);
     }
 
-    public static void update() {
+    public void update() throws ParseException {
         initializeData();
         initializeAdapter();
     }
