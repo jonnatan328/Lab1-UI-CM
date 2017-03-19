@@ -74,7 +74,7 @@
         android:id="@+id/event_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/event_name"
+        android:layout_below="@+id/event_location"
         android:maxLines="3"
         android:padding="8dp"
         android:textColor="#666"

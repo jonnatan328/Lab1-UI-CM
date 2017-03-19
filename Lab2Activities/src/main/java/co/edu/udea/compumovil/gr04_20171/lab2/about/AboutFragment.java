@@ -1,7 +1,5 @@
-package co.edu.udea.compumovil.gr04_20171.lab2.user.profile;
+package co.edu.udea.compumovil.gr04_20171.lab2.about;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,9 +8,9 @@ import android.view.ViewGroup;
 
 import co.edu.udea.compumovil.gr04_20171.lab2.R;
 
+public class AboutFragment extends Fragment {
 
-public class ProfileFragment extends Fragment {
-    public ProfileFragment() {
+    public AboutFragment() {
         // Required empty public constructor
     }
 
@@ -20,6 +18,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
+
 }

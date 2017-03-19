@@ -37,10 +37,9 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.Login" />
-        <activity
-            android:name=".configuration.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".event.detailEvent.DetailEventActivity"></activity>
+
+        <activity android:name=".event.detailEvent.DetailEventActivity" />
+
     </application>
 
 </manifest>

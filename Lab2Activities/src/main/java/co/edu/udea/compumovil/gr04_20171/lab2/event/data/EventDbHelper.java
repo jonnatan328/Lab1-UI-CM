@@ -48,15 +48,15 @@ public class EventDbHelper extends SQLiteOpenHelper {
     }
 
     public void loadEvents(SQLiteDatabase sqLiteDatabase) {
-        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.school),"ACDC UdeA", "ACDC en concierto con Shakira en la UdeA",
+        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.a),"ACDC UdeA", "ACDC en concierto con Shakira en la UdeA",
                  2, "WHAT", new Date(2017),"UdeA"));
-        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.school),"Besaton", "Besaton de 3 horas",
+        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.a),"Besaton", "Besaton de 3 horas",
                 4, "Carlos Perez", new Date(2017),"Parque de los deseos"));
-        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.school),"Concierto por la paz", "Grandes artistas en concierto por la paz",
+        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.a),"Concierto por la paz", "Grandes artistas en concierto por la paz",
                 2, "Pedro Gomez", new Date(2017),"Frontera con Venezuela"));
-        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.school),"Desfile de carros antiguos", "Los mejores carros antiguos en Medellin",
+        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.a),"Desfile de carros antiguos", "Los mejores carros antiguos en Medellin",
                 2, "Juan Carmona", new Date(2017),"Avenida del Rio"));
-        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.school),"Recreación para niños", "Recreación para los niños del area metropolitana",
+        mockEvent(sqLiteDatabase, new Event(String.valueOf(R.drawable.a),"Recreación para niños", "Recreación para los niños del area metropolitana",
                 2, "Santiago Cano", new Date(2017),"Jardin Botanico"));
         System.out.println("2--------------------------------------------------------------------------");
 
@@ -112,8 +112,8 @@ public class EventDbHelper extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().query(
                 EventEntry.TABLE_NAME,
                 null,
-                EventEntry._ID + " LIKE ?",
-                new String[]{eventId},
+                EventEntry._ID + " LIKE ?" + new String[]{eventId},
+                null,
                 null,
                 null,
                 null);

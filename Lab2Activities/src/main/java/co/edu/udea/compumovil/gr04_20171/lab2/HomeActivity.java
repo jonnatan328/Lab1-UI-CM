@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.gr04_20171.lab2;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,9 +17,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import co.edu.udea.compumovil.gr04_20171.lab2.about.AboutFragment;
+import co.edu.udea.compumovil.gr04_20171.lab2.configuration.ConfigurationFragment;
 import co.edu.udea.compumovil.gr04_20171.lab2.event.addEdit.AddEventFragment;
 import co.edu.udea.compumovil.gr04_20171.lab2.event.eventList.EventFragment;
 import co.edu.udea.compumovil.gr04_20171.lab2.user.login.LoginActivity;
+import co.edu.udea.compumovil.gr04_20171.lab2.user.profile.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AddEventFragment.OnFragmentInteractionListener {
@@ -114,12 +118,11 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_events) {
             fragment = new EventFragment();
         } else if (id == R.id.nav_profile) {
-            fragment = new AddEventFragment();
-
+            fragment = new ProfileFragment();
         } else if (id == R.id.nav_config) {
-
+            fragment = new ConfigurationFragment();
         } else if (id == R.id.nav_about) {
-
+            fragment = new AboutFragment();
         } else if (id == R.id.nav_logout) {
             logout();
         }
@@ -143,4 +146,6 @@ public class HomeActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 }
