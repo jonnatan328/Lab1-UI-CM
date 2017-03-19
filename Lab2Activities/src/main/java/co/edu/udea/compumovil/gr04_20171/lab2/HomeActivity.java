@@ -1,10 +1,9 @@
 package co.edu.udea.compumovil.gr04_20171.lab2;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -17,15 +16,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import co.edu.udea.compumovil.gr04_20171.lab2.event.data.EventDbHelper;
-import co.edu.udea.compumovil.gr04_20171.lab2.event.data.EventFragment;
+import co.edu.udea.compumovil.gr04_20171.lab2.event.addEdit.AddEventFragment;
+import co.edu.udea.compumovil.gr04_20171.lab2.event.eventList.EventFragment;
 import co.edu.udea.compumovil.gr04_20171.lab2.user.login.LoginActivity;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, AddEventFragment.OnFragmentInteractionListener {
 
     private Session session;
-
+    private FragmentManager fragmentManager;
 
 
     @Override
@@ -35,19 +34,24 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Iniciamos el fragment manager
+        fragmentManager = getSupportFragmentManager();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventFragment eventFragment = (EventFragment)
+                Fragment addEventFragment = new AddEventFragment();
+                fragmentManager.beginTransaction().replace(R.id.content_home,addEventFragment).commit();
+                /*AddEventFragment addEventFragment = (AddEventFragment)
                         getSupportFragmentManager().findFragmentById(R.id.content_home);
-                if (eventFragment == null) {
-                    eventFragment = EventFragment.newInstance();
+                if (addEventFragment == null) {
+                    addEventFragment = AddEventFragment.newInstance();
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .add(R.id.content_home, eventFragment)
+                            .add(R.id.content_home, addEventFragment)
                             .commit();
-                }
+                }*/
             }
         });
 
@@ -103,24 +107,14 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-
         Fragment fragment = null;
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_events) {
-            EventFragment eventFragment = (EventFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.content_home);
-            if (eventFragment == null) {
-                eventFragment = EventFragment.newInstance();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.content_home, eventFragment)
-                        .commit();
-            }
+            fragment = new EventFragment();
         } else if (id == R.id.nav_profile) {
+            fragment = new AddEventFragment();
 
         } else if (id == R.id.nav_config) {
 
@@ -143,5 +137,10 @@ public class HomeActivity extends AppCompatActivity
         session.setLoggedin(false);
         finish();
         startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

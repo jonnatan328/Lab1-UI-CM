@@ -36,11 +36,11 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.Login" />
         <activity
             android:name=".configuration.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".user.profile.ProfileActivity"></activity>
+        <activity android:name=".event.detailEvent.DetailEventActivity"></activity>
     </application>
 
 </manifest>

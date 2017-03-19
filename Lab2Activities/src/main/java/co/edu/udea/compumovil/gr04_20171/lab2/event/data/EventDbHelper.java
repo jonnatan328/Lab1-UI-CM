@@ -108,6 +108,18 @@ public class EventDbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getEventById(String eventId) {
+        Cursor cursor = getReadableDatabase().query(
+                EventEntry.TABLE_NAME,
+                null,
+                EventEntry._ID + " LIKE ?",
+                new String[]{eventId},
+                null,
+                null,
+                null);
+        return cursor;
+    }
+
     public Cursor getAllEvents() {
         return getReadableDatabase()
                 .query(

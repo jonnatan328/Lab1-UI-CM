@@ -19,6 +19,13 @@
     <item name="masked" type="id" />
     <string name="title_activity_home">HomeActivity</string>
 
+    <!-- Events -->
+    <string name="nameEvent">Nombre</string>
+    <string name="personInCharge">Responsable</string>
+    <string name="dateEvent">Fecha</string>
+    <string name="locationEvent">Ubicación</string>
+    <string name="descriptionEvent">Descripción</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

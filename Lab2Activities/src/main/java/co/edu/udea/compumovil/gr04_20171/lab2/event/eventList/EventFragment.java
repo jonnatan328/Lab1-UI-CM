@@ -1,6 +1,7 @@
-package co.edu.udea.compumovil.gr04_20171.lab2.event.data;
+package co.edu.udea.compumovil.gr04_20171.lab2.event.eventList;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,10 @@ import java.util.Date;
 
 
 import co.edu.udea.compumovil.gr04_20171.lab2.R;
+import co.edu.udea.compumovil.gr04_20171.lab2.event.data.Event;
+import co.edu.udea.compumovil.gr04_20171.lab2.event.data.EventContract;
+import co.edu.udea.compumovil.gr04_20171.lab2.event.data.EventDbHelper;
+import co.edu.udea.compumovil.gr04_20171.lab2.event.detailEvent.DetailEventActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -117,10 +122,20 @@ public class EventFragment extends Fragment {
         eventListAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("DemoRecView", "Pulsado el elemento " + recyclerView.getChildPosition(v));
+                Log.i("DemoRecView", "Pulsado el elemento " + recyclerView.getChildAdapterPosition(v));
+                int currentId = recyclerView.getChildAdapterPosition(v) + 1;
+                showDetailScreen(currentId);
             }
         });
         recyclerView.setAdapter(eventListAdapter);
+    }
+
+    private void showDetailScreen(int currentId) {
+        Intent intent = new Intent(getActivity(), DetailEventActivity.class);
+        Log.d("id antes de enviar", String.valueOf(currentId));
+        intent.putExtra("idEvent", String.valueOf(currentId));
+        intent.putExtra("nameEvent", "Besaton");
+        startActivity(intent);
     }
 
     public void update() throws ParseException {
