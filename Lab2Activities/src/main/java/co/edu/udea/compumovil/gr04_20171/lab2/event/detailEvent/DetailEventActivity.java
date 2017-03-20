@@ -8,7 +8,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.Date;
 
 import co.edu.udea.compumovil.gr04_20171.lab2.R;
 import co.edu.udea.compumovil.gr04_20171.lab2.event.data.Event;
@@ -39,6 +41,15 @@ public class DetailEventActivity extends AppCompatActivity {
         Log.d("id del Event", eventId);
        // Cursor cursorEvent2 = eventDbHelper.getEventByName(eventName);
         //Log.d("cursor 2", String.valueOf(cursorEvent2.getCount()));
+
+        nameField = (TextView) findViewById(R.id.event_name);
+        personInChargeField = (TextView) findViewById(R.id.event_person_in_charge);
+        dateField = (TextView) findViewById(R.id.event_date);
+        locationField = (TextView) findViewById(R.id.event_location);
+        descriptionField = (TextView) findViewById(R.id.event_description);
+
+
+        eventDbHelper = new EventDbHelper(DetailEventActivity.this);
         Cursor cursorEvent = eventDbHelper.getEventById(eventId);
         cursorEvent.moveToPosition(0);
         Event event = null;
@@ -53,11 +64,13 @@ public class DetailEventActivity extends AppCompatActivity {
 
     public void loadEvent(Event event){
         //imageField.setBackground();
-        nameField.setText(event.getName());
-        personInChargeField.setText(event.getPersonInCharge());
+        nameField.setText(event.getName().toString());
+        personInChargeField.setText(event.getPersonInCharge().toString());
         //ratingField;
-        dateField.setText((CharSequence) event.getDate());
-        locationField.setText(event.getLocation());
-        descriptionField.setText(event.getDescription());
+        Date date = event.getDate();
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+        dateField.setText(dateFormat.format(date));
+        locationField.setText(event.getLocation().toString());
+        descriptionField.setText(event.getDescription().toString());
     }
 }

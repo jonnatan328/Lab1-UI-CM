@@ -112,7 +112,8 @@ public class EventDbHelper extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().query(
                 EventEntry.TABLE_NAME,
                 null,
-                EventEntry._ID + " LIKE ?" + new String[]{eventId},
+                EventEntry._ID + " LIKE ?",
+                new String[]{eventId},
                 null,
                 null,
                 null,
