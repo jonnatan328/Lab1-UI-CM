@@ -189,11 +189,13 @@ public class LoginFragment extends Fragment {
             if (!mPassword.equals(passwordDb)) {
                 return 3;
             }
+            session.setUsername(user.getUsername());
             return 1;
         }
 
         @Override
         protected void onPostExecute(final Integer success) {
+
             mAuthTask = null;
             switch (success) {
                 case 1:

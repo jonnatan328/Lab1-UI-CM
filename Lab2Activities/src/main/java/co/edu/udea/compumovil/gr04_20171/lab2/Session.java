@@ -24,6 +24,14 @@ public class Session {
         editor.commit();
     }
 
+    public void setUsername(String username){
+        editor.putString("userLogged",username);
+        editor.commit();
+    }
+
+    public String getUsername(){
+        return preferences.getString("userLogged", null);
+    }
     public boolean loggedin(){
         return preferences.getBoolean("loggedInmode", false);
     }
