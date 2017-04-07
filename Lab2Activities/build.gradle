@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "co.edu.udea.compumovil.gr04_20171.lab2"
+        applicationId "co.edu.udea.compumovil.gr04_20171.lab3"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1

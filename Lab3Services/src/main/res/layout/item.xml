@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/event_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_image"
+            android:maxLines="3"
+            android:padding="8dp"
+            android:textColor="#222"
+            android:textStyle="bold"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/event_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_name"
+            android:maxLines="3"
+            android:padding="8dp"
+            android:textColor="#666"
+            android:textSize="14dp" />
+
+        <TextView
+
+            android:id="@+id/event_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:layout_below="@id/event_description"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:layout_marginLeft="30dp"
+            android:drawableLeft="@drawable/ic_menu_camera"
+            android:gravity="center"
+
+            />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

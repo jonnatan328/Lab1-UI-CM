@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Opciones generales">
+
+        <EditTextPreference
+            android:key="edit_perfil"
+            android:title="Modificar el perfil"
+            android:summary="Hace lo que dice"/>
+
+        <CheckBoxPreference
+            android:key="check_sesion"
+            android:title="Mantener sesión"
+            android:summary="Hace lo que dice"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Notificaciones">
+
+        <CheckBoxPreference
+            android:key="check_notificar"
+            android:title="Permitir notificaciones"
+            android:summary="Hace lo que dice"/>
+
+        <CheckBoxPreference
+            android:key="check_sonido"
+            android:dependency="check_notificar"
+            android:title="Notificaciones sonoras"
+            android:summary="Hace lo que dice"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

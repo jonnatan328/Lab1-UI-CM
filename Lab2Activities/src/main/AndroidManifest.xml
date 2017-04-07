@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.edu.udea.compumovil.gr04_20171.lab2">
+    package="co.edu.udea.compumovil.gr04_20171.lab3">
 
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
@@ -14,31 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="co.edu.udea.compumovil.gr04_20171.lab3.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".user.login.LoginActivity"
+            android:name="co.edu.udea.compumovil.gr04_20171.lab3.user.login.LoginActivity"
             android:theme="@style/AppTheme.Login">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".user.addEdit.AddEditUserActivity"
+            android:name="co.edu.udea.compumovil.gr04_20171.lab3.user.addEdit.AddEditUserActivity"
             android:theme="@style/AppTheme.Login" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name="co.edu.udea.compumovil.gr04_20171.lab3.WelcomeActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name="co.edu.udea.compumovil.gr04_20171.lab3.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.Login" />
 
-        <activity android:name=".event.detailEvent.DetailEventActivity" />
+        <activity android:name="co.edu.udea.compumovil.gr04_20171.lab3.event.detailEvent.DetailEventActivity" />
 
     </application>
 
